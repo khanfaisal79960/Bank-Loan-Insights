@@ -38,7 +38,7 @@
 cd Bank-Loan-Insights</code></pre>
     </li>
     <li>Download and install <a href="https://powerbi.microsoft.com/desktop/" target="_blank">Power BI Desktop</a> (if not already installed).</li>
-    <li>Open the file <code>bank_loan_data_insights.pbix</code> in Power BI.</li>
+    <li>Open the file <code>powerBI/bank_loan_data_insights.pbix</code> in Power BI.</li>
   </ol>
 
   <h2>💻 Built With</h2>
