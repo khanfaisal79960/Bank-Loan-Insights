@@ -13,7 +13,7 @@
     <p>Explore the interactive dashboard powered by Looker Studio:</p>
     <a href="https://lookerstudio.google.com/s/p8WTvQ5COeM" target="_blank">Click here to view on Looker Studio</a>
     <br><br>
-    <iframe src="https://lookerstudio.google.com/embed/reporting/p8WTvQ5COeM/page/p_3x4p5yt4qc" allowfullscreen></iframe>
+  
   </div>
 
   <h2>📸 Project Screenshots</h2>
