@@ -1,52 +1,74 @@
-<h1 align="center" id="title">Bank Loan Insights</h1>
+<h1 align="center" id="title">🏦 Bank Loan Insights</h1>
 
-<p align="center"><img src="https://socialify.git.ci/khanfaisal79960/Bank-Loan-Insights/image?language=1&amp;name=1&amp;owner=1&amp;theme=Dark" alt="project-image"></p>
+<p align="center">
+  <img src="https://socialify.git.ci/khanfaisal79960/Bank-Loan-Insights/image?language=1&name=1&owner=1&theme=Dark" alt="project-image">
+</p>
 
-<p id="description">This project aims to explore and analyze historical loan application data to identify key trends customer segments and factors influencing loan approval decisions. By using data analysis and visualization techniques the project provides actionable insights that can help financial institutions optimize their loan policies and improve approval accuracy.</p>
+<p align="center"><i>
+A data analytics project uncovering insights from bank loan applications to support smarter, data-driven lending decisions.
+</i></p>
 
-<h2>🚀 Demo</h2>
+---
 
-[https://lookerstudio.google.com/s/p8WTvQ5COeM](https://lookerstudio.google.com/s/p8WTvQ5COeM)
+## 📈 Overview
 
-<h2>Project Screenshots:</h2>
+This project analyzes historical bank loan data to extract meaningful patterns and trends that can help financial institutions enhance their risk management, identify customer segments, and improve loan approval strategies.
 
-<img src="assets/summary.jpg" alt="project-screenshot" width="500" height="300/">
+It leverages data visualization and analysis tools to turn raw data into intuitive insights and interactive dashboards for exploration.
 
-<img src="assets/overview.jpg" alt="project-screenshot" width="500" height="300/">
+---
 
-  
-  
-<h2>🧐 Features</h2>
+## 🚀 Live Dashboard
 
-Here're some of the project's best features:
+Explore the interactive report hosted on **Looker Studio**:
 
-*   📌 Data Cleaning & Preprocessing
-*   📊 Exploratory Data Analysis (EDA)
-*   📉 Risk Factor Analysis
-*   📁 Segmentation of Applicants
-*   📈 Interactive Visualizations
-*   🔍 Insights Summary
-*   📊 Dashboard (Optional/Planned)
+<div align="center">
+  <a href="https://lookerstudio.google.com/s/p8WTvQ5COeM" target="_blank">
+    <img src="https://img.shields.io/badge/View%20Dashboard-Looker%20Studio-blue?logo=google" alt="Live Dashboard">
+  </a>
+  <br><br>
+  <iframe width="100%" height="480" src="https://lookerstudio.google.com/embed/reporting/p8WTvQ5COeM/page/p_3x4p5yt4qc" frameborder="0" style="border:0" allowfullscreen></iframe>
+</div>
 
-<h2>🛠️ Installation Steps:</h2>
+---
 
-<p>1. Clone the Repository Begin by cloning the repository to your local machine: bash Copy Edit</p>
+## 📸 Project Screenshots
 
-```
-git clone https://github.com/khanfaisal79960/Bank-Loan-Insights.git cd Bank-Loan-Insights
-```
+<p float="left">
+  <img src="assets/summary.jpg" alt="summary" width="500" />
+  <img src="assets/overview.jpg" alt="overview" width="500" />
+</p>
 
-<p>2. Download Power BI (if not installed)</p>
+---
 
-<p>3. Open bank_loan_data_insights.pbix in power bi</p>
+## 🔍 Features
 
-  
-  
-<h2>💻 Built with</h2>
+- 📌 **Data Cleaning & Preprocessing**  
+  Prepared raw loan data for analysis by handling nulls, outliers, and formatting issues.
 
-Technologies used in the project:
+- 📊 **Exploratory Data Analysis (EDA)**  
+  Analyzed applicant demographics, loan status patterns, income brackets, and more.
 
-*   Power BI
-*   Google Data Studio / Looker Studio
-*   Advanced Excel
-*   DAX
+- 📉 **Risk Factor Analysis**  
+  Identified key variables impacting loan approvals and defaults.
+
+- 📁 **Customer Segmentation**  
+  Grouped applicants by financial behavior and demographic traits.
+
+- 📈 **Interactive Dashboards**  
+  Developed visual dashboards in Looker Studio and Power BI.
+
+- 🔍 **Insight Summary**  
+  Summarized business-relevant findings like credit history's impact on approval.
+
+---
+
+## 🛠️ Installation Steps
+
+To run this project locally or modify the dashboard:
+
+### 1. Clone the Repository
+
+```bash
+git clone https://github.com/khanfaisal79960/Bank-Loan-Insights.git
+cd Bank-Loan-Insights
