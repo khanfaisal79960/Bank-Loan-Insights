@@ -13,7 +13,9 @@
     <p>Explore the interactive dashboard powered by Looker Studio:</p>
     <a href="https://lookerstudio.google.com/s/p8WTvQ5COeM" target="_blank">Click here to view on Looker Studio</a>
     <br><br>
-  
+  <p>View Live Project:</p>
+    <a href="bank-loan-insights.netlify.app" target="_blank">Click here to view on Looker Studio</a>
+    <br><br>
   </div>
 
   <h2>📸 Project Screenshots</h2>
