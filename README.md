@@ -14,7 +14,7 @@
     <a href="https://lookerstudio.google.com/s/p8WTvQ5COeM" target="_blank">Click here to view on Looker Studio</a>
     <br><br>
   <p>View Live Project:</p>
-    <a href="bank-loan-insights.netlify.app" target="_blank">Click here to view the live project</a>
+    <a href="https://bank-loan-insights.netlify.app" target="_blank">Click here to view the live project</a>
     <br><br>
   </div>
 
