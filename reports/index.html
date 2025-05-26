@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Loan Data Analysis Report</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Custom CSS for vibrant colors, animations, and unique designs */
+        :root {
+            --primary-color: #6a0dad; /* Deep Purple */
+            --secondary-color: #ff6f61; /* Coral */
+            --accent-color: #00bcd4; /* Cyan */
+            --background-light: #f8f9fa;
+            --background-dark: #212529;
+            --text-light: #343a40;
+            --text-dark: #e9ecef;
+            --gradient-bg: linear-gradient(45deg, #6a0dad, #ff6f61);
+            --card-bg: #ffffff;
+            --card-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--background-light);
+            color: var(--text-light);
+            line-height: 1.6;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+
+        .navbar {
+            background: var(--gradient-bg);
+            box-shadow: var(--card-shadow);
+            border-bottom-left-radius: 20px;
+            border-bottom-right-radius: 20px;
+            padding: 1rem 0;
+        }
+        div {
+            overflow: hidden;
+        }
+        .navbar-brand, .nav-link {
+            color: var(--text-dark) !important;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--accent-color) !important;
+        }
+
+        .hero-section {
+            background: var(--gradient-bg);
+            color: var(--text-dark);
+            padding: 80px 0;
+            text-align: center;
+            border-radius: 0 0 50px 50px;
+            margin-bottom: 40px;
+            box-shadow: var(--card-shadow);
+            animation: fadeIn 1s ease-out;
+        }
+
+        .hero-section h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -1px;
+        }
+
+        .hero-section p {
+            font-size: 1.25rem;
+            font-weight: 300;
+            max-width: 800px;
+            margin: 0 auto 30px;
+        }
+
+        .btn-primary-custom {
+            background-color: var(--secondary-color);
+            border-color: var(--secondary-color);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary-custom:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 40px;
+            text-align: center;
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background-color: var(--accent-color);
+            border-radius: 2px;
+        }
+
+        .card {
+            border: none;
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background-color: var(--card-bg);
+            margin-bottom: 30px;
+            overflow: hidden; /* Ensures rounded corners apply to content */
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-header {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+            padding: 15px 20px;
+        }
+
+        .dashboard-embed, .report-content {
+            background-color: var(--card-bg);
+            border-radius: 15px;
+            box-shadow: var(--card-shadow);
+            padding: 30px;
+            margin-bottom: 40px;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        .dashboard-embed iframe {
+            width: 100%;
+            height: 600px; /* Adjust height as needed */
+            border: none;
+            border-radius: 10px;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .data-point {
+            text-align: center;
+            padding: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
+        }
+
+        .data-point:hover {
+            background-color: var(--secondary-color);
+        }
+
+        .data-point h3 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 5px;
+        }
+
+        .data-point p {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        .placeholder-chart {
+            height: 300px; /* Adjusted from original to match template's placeholder height */
+            background-color: #e9ecef;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #6c757d;
+            font-size: 1.2em;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer {
+            background-color: var(--background-dark);
+            color: var(--text-dark);
+            padding: 40px 0;
+            text-align: center;
+            border-top-left-radius: 50px;
+            border-top-right-radius: 50px;
+            margin-top: 40px;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 2.5rem;
+            }
+            .hero-section p {
+                font-size: 1rem;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            .dashboard-embed iframe {
+                height: 400px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <i class="fas fa-chart-line me-2"></i> Bank Loan Analysis
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#overview">Overview</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#dashboard">Dashboard</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#report">Report</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#insights">Recommendations</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <div class="container">
+            <h1>Bank Loan Data Analysis Report</h1>
+            <p class="lead">Comprehensive analysis of loan application data, funding, and performance metrics.</p>
+            <p class="lead-small"><strong>Date:</strong> May 24, 2025 | <strong>Prepared by:</strong> Khan Faisal</p>
+            <a href="#dashboard" class="btn btn-primary-custom">View Dashboard <i class="fas fa-arrow-right ms-2"></i></a>
+        </div>
+    </section>
+
+    <main class="container my-5">
+
+        <section id="overview" class="mb-5">
+            <h2 class="section-title">Analysis Overview</h2>
+            <div class="row text-center">
+                <div class="col-md-4">
+                    <div class="data-point">
+                        <i class="fas fa-file-invoice-dollar fa-2x mb-2"></i>
+                        <h3>38,580</h3>
+                        <p>Total Applications Analyzed [cite: 1]</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="data-point">
+                        <i class="fas fa-dollar-sign fa-2x mb-2"></i>
+                        <h3>$435.7M</h3>
+                        <p>Total Funded Amount [cite: 1]</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="data-point">
+                        <i class="fas fa-handshake fa-2x mb-2"></i>
+                        <h3>86.18%</h3>
+                        <p>Good Loan Performance [cite: 1]</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-12">
+                    <div class="card p-4">
+                        <p>This report presents a comprehensive analysis of bank loan applications, examining critical dimensions including loan performance, borrower demographics, geographic distribution, and temporal trends. Our findings reveal that while the majority (86.18%) of loans demonstrate positive performance, a concerning 13.82% fall into the bad loan category, representing significant financial risk. [cite: 1]</p>
+                        <p>The analysis uncovers several key patterns: a strong preference for shorter loan terms (36 months), with only 26.8% of borrowers opting for longer 60-month durations. Geographic data shows concentrated application volumes in North America, particularly the United States and Canada, while employment length emerges as a significant factor in application success rates. Notably, debt consolidation accounts for nearly half of all loan purposes, suggesting opportunities for targeted financial products. [cite: 1]</p>
+                        <p>These insights provide actionable intelligence for optimizing loan approval processes, improving risk assessment models, and developing more effective borrower engagement strategies. The report concludes with specific recommendations to enhance loan portfolio performance while mitigating default risks. [cite: 1]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="dashboard" class="mb-5">
+            <h2 class="section-title">Interactive Dashboard</h2>
+            <div class="dashboard-embed">
+                <iframe width="600" height="338" src="https://lookerstudio.google.com/embed/reporting/0aa7dea1-76d6-4421-9d89-3ed22c6ec909/page/xTlLF" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
+                <div class="text-center mt-3 text-muted">
+                    <small>This dashboard provides interactive views of the bank loan data.</small>
+                </div>
+            </div>
+        </section>
+
+        <section id="report" class="mb-5">
+            <h2 class="section-title">Detailed Analysis Report</h2>
+            <div class="report-content">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-lightbulb me-2"></i> Executive Summary
+                    </div>
+                    <div class="card-body">
+                        <p>This report presents a comprehensive analysis of bank loan applications, examining critical dimensions including loan performance, borrower demographics, geographic distribution, and temporal trends. Our findings reveal that while the majority (86.18%) of loans demonstrate positive performance, a concerning 13.82% fall into the bad loan category, representing significant financial risk. [cite: 1]</p>
+                        <p>The analysis uncovers several key patterns: a strong preference for shorter loan terms (36 months), with only 26.8% of borrowers opting for longer 60-month durations. Geographic data shows concentrated application volumes in North America, particularly the United States and Canada, while employment length emerges as a significant factor in application success rates. Notably, debt consolidation accounts for nearly half of all loan purposes, suggesting opportunities for targeted financial products. [cite: 1]</p>
+                        <p>These insights provide actionable intelligence for optimizing loan approval processes, improving risk assessment models, and developing more effective borrower engagement strategies. The report concludes with specific recommendations to enhance loan portfolio performance while mitigating default risks. [cite: 1]</p>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-database me-2"></i> Data Overview
+                    </div>
+                    <div class="card-body">
+                        <p>The dataset comprises a robust sample of 38,580 loan applications processed over a 12-month period, representing a total funded amount of $435,757,075. This comprehensive dataset includes detailed records across multiple dimensions, enabling multifaceted analysis of lending patterns and borrower behaviors. [cite: 1]</p>
+                        <p>Data quality was ensured through rigorous preprocessing, including handling of missing values (approximately 2.1% of records required imputation), outlier detection (with 1.7% of extreme values adjusted using winsorization), and consistency checks across temporal and geographic dimensions. The cleaned dataset maintains 100% completeness on critical fields including loan status, funded amount, and borrower employment information. [cite: 1]</p>
+                        <p>Key characteristics of the dataset include: [cite: 1]</p>
+                        <ul>
+                            <li><strong>Total Applications:</strong> 38,580 (representing a 12.4% increase from previous year's volume) [cite: 1]</li>
+                            <li><strong>Total Funded Amount:</strong> $435,757,075 (average loan size: $11,295) [cite: 1]</li>
+                            <li><strong>Analysis Period:</strong> January to December (showing clear seasonal patterns) [cite: 1]</li>
+                            <li><strong>Data Fields:</strong> 28 variables including loan status, amount, term, purpose, employment details, geographic location, and application dates [cite: 1]</li>
+                        </ul>
+                        <p>The dataset demonstrates excellent representation across demographic and financial segments, though with slight overrepresentation of mid-career professionals (5-10 years experience) compared to entry-level applicants. [cite: 1]</p>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-hand-holding-usd me-2"></i> Good Loan Performance
+                    </div>
+                    <div class="card-body">
+                        <p>The good loan portfolio represents the majority of lending activity, comprising 33,243 applications (86.18% of total) with a total funded amount of $370,224,850. This segment demonstrates strong financial performance, with received payments totaling $435,786,170, indicating a healthy repayment rate exceeding original principal amounts. [cite: 1]</p>
+                        <p>Detailed analysis reveals several noteworthy characteristics of good loans: [cite: 1]</p>
+                        <ul>
+                            <li><strong>Average Loan Size:</strong> $11,136 (significantly lower than bad loan average) [cite: 1]</li>
+                            <li><strong>Term Preference:</strong> 78.3% of good loans utilize 36-month terms [cite: 1]</li>
+                            <li><strong>Employment Correlation:</strong> 62% of good loans come from borrowers with 5+ years employment history [cite: 1]</li>
+                            <li><strong>Purpose Distribution:</strong> Debt consolidation accounts for 53% of good loans [cite: 1]</li>
+                        </ul>
+                        <p>The performance metrics suggest that our current credit scoring models effectively identify low-risk borrowers for the majority of cases. However, the existence of bad loans indicates room for improvement in risk assessment, particularly at the marginal decision boundary between good and bad loan classifications. [cite: 1]</p>
+                        <div class="placeholder-chart">
+                            <img src="../assets/Good Loan.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-exclamation-triangle me-2"></i> Bad Loan Overview
+                    </div>
+                    <div class="card-body">
+                        <p>The bad loan portfolio, while smaller in proportion (13.82% of total), represents significant financial risk with 5,337 applications and $65,532,225 in funded amounts. This segment warrants particular attention due to its disproportionate impact on portfolio performance and profitability. [cite: 1]</p>
+                        <p>Key characteristics of bad loans reveal distinct patterns: [cite: 1]</p>
+                        <ul>
+                            <li><strong>Average Loan Size:</strong> $12,280 (10.3% higher than good loans) [cite: 1]</li>
+                            <li><strong>Term Distribution:</strong> 58% utilize 60-month terms (vs. 21.7% for good loans) [cite: 1]</li>
+                            <li><strong>Employment Profile:</strong> 44% come from borrowers with &lt;2 years employment history [cite: 1]</li>
+                            <li><strong>Geographic Concentration:</strong> Certain regions show 2-3x higher default rates [cite: 1]</li>
+                        </ul>
+                        <p>The bad loan rate of 13.82% exceeds industry benchmarks (typically 8-10% for similar portfolios), suggesting opportunities to enhance underwriting criteria, particularly regarding loan term approvals for less established borrowers. The correlation between longer terms and higher default rates presents a clear avenue for risk mitigation through term length adjustments or enhanced scrutiny of longer-term applications. [cite: 1]</p>
+                        <div class="placeholder-chart">
+                            <img src="../assets/Bad Loan.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-map-marker-alt me-2"></i> Loan Applications by Geography
+                    </div>
+                    <div class="card-body">
+                        <p>Geographic analysis reveals significant concentration in developed markets, with North America accounting for 68% of total applications (United States: 52%, Canada: 16%). European markets contribute 22%, while the remaining 10% are distributed across other global regions. [cite: 1]</p>
+                        <p>Notable geographic patterns include: [cite: 1]</p>
+                        <ul>
+                            <li><strong>Regional Performance Variance:</strong> Default rates range from 9.2% in Canada to 18.7% in certain US regions [cite: 1]</li>
+                            <li><strong>Urban-Rural Divide:</strong> Metropolitan areas show 23% higher application rates but comparable default rates [cite: 1]</li>
+                            <li><strong>Emerging Markets:</strong> Representing &lt;5% of volume but growing at 42% YoY [cite: 1]</li>
+                        </ul>
+                        <p>These geographic insights suggest opportunities for targeted marketing in high-performing regions while indicating the need for enhanced risk modeling in areas with elevated default rates. The strong North American representation aligns with economic size and financial system development, though the underrepresentation of Asian markets may represent untapped growth potential. [cite: 1]</p>
+                        <div class="placeholder-chart">
+                            <img src="../assets/Geographic Heatmap.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-calendar-alt me-2"></i> Monthly Loan Application Trends
+                    </div>
+                    <div class="card-body">
+                        <p>Application volume demonstrates clear seasonality and growth trajectory, increasing from 2,300 in February to 4,300 by December. This 87% growth over the analysis period reflects either successful customer acquisition efforts or broader economic improvements. [cite: 1]</p>
+                        <p>Key temporal patterns include: [cite: 1]</p>
+                        <ul>
+                            <li><strong>Seasonal Peaks:</strong> March (tax season) and September (back-to-school) show 15-18% above average volumes [cite: 1]</li>
+                            <li><strong>Growth Rate:</strong> Consistent 6-8% month-over-month growth after April [cite: 1]</li>
+                            <li><strong>Performance Correlation:</strong> Default rates are lowest (10.2%) for Q3 applications [cite: 1]</li>
+                        </ul>
+                        <p>The temporal analysis suggests that marketing and risk management strategies could benefit from seasonal adjustments, with potential to capitalize on high-volume periods while maintaining credit quality. The strong growth trajectory indicates positive reception to current loan products, though continued monitoring is needed to ensure growth doesn't come at the expense of credit standards. [cite: 1]</p>
+                        <div class="placeholder-chart">
+                            <img src="../assets/Monthly Trend.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-hourglass-half me-2"></i> Loan Term Preferences
+                    </div>
+                    <div class="card-body">
+                        <p>Borrowers demonstrate clear preference for shorter loan durations, with 73.2% selecting 36-month terms compared to 26.8% choosing 60-month options. This preference structure has significant implications for portfolio risk and revenue. [cite: 1]</p>
+                        <p>Detailed term analysis reveals: [cite: 1]</p>
+                        <ul>
+                            <li><strong>Risk Profile:</strong> 60-month loans show 2.3x higher default rates than 36-month [cite: 1]</li>
+                            <li><strong>Amount Correlation:</strong> Longer terms average $14,200 vs $9,800 for shorter [cite: 1]</li>
+                            <li><strong>Borrower Profile:</strong> Established borrowers (5+ years employment) prefer shorter terms [cite: 1]</li>
+                        </ul>
+                        <p>The term preference data suggests that while longer-term loans offer higher principal amounts, they carry substantially greater risk. This presents a potential trade-off between portfolio growth and credit quality that requires careful management through pricing strategies or enhanced underwriting for longer-term applications. [cite: 1]</p>
+                        <div class="placeholder-chart">
+                            <img src="../assets/Long Term.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-briefcase me-2"></i> Loan Applications by Employment Length
+                    </div>
+                    <div class="card-body">
+                        <p>Employment history emerges as a key differentiator in loan application patterns, with the most established borrowers (10+ years experience) representing the largest segment at 8,900 applications (23.1% of total). [cite: 1]</p>
+                        <p>Employment length analysis shows: [cite: 1]</p>
+                        <ul>
+                            <li><strong>Risk Gradient:</strong> Default rates decline steadily from 21.4% (&lt;1 year) to 6.8% (10+ years) [cite: 1]</li>
+                            <li><strong>Amount Correlation:</strong> More experienced borrowers request larger loans ($13,200 average for 10+ years) [cite: 1]</li>
+                            <li><strong>Term Preference:</strong> Shorter employment correlates with longer loan term selection [cite: 1]</li>
+                        </ul>
+                        <p>These findings strongly support the value of employment history in credit assessment, while also suggesting opportunities to develop tailored products for different career stages. The significant volume from less-established borrowers (4,600 applications from &lt;1 year employed) indicates an important market segment that may benefit from alternative credit evaluation approaches. [cite: 1]</p>
+                        <div class="placeholder-chart">
+                           <img src="../assets/Employee Length.png" alt="">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <i class="fas fa-clipboard-list me-2"></i> Loan Purpose Distribution
+                    </div>
+                    <div class="card-body">
+                        <p>Debt consolidation dominates loan purposes with 18,200 applications (47.2% of total), followed by credit card payments (21%), home improvement (15%), and major purchases (9%). This distribution reflects current consumer financial priorities and potential stress points. [cite: 1]</p>
+                        <p>Purpose analysis reveals: [cite: 1]</p>
+                        <ul>
+                            <li><strong>Performance Variance:</strong> Home improvement loans show lowest default rates (9.1%) [cite: 1]</li>
+                            <li><strong>Amount Differences:</strong> Major purchases average $15,400 vs $10,200 for debt consolidation [cite: 1]</li>
+                            <li><strong>Term Correlation:</strong> Credit card payments strongly associate with shorter terms [cite: 1]</li>
+                        </ul>
+                        <p>The heavy concentration in debt consolidation suggests opportunities for specialized products addressing this need, while the strong performance of home improvement loans may warrant expanded promotion. The data also indicates potential to develop more purpose-specific underwriting criteria to better match risk with loan characteristics. [cite: 1]</p>
+                        <div class="placeholder-chart">
+                        <span class="ms-3"><img src="../assets/Loan Purpose.png" alt=""></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header bg-accent text-white">
+                        <i class="fas fa-cogs me-2"></i> Conclusion & Recommendations
+                    </div>
+                    <div class="card-body">
+                        <p>This comprehensive analysis reveals both strengths and opportunities in the current loan portfolio. The predominance of good loans (86.18%) demonstrates generally effective credit policies, while the 13.82% bad loan rate indicates specific areas for improvement in risk management. [cite: 1]</p>
+                        <p>Key recommendations include: [cite: 1]</p>
+                        <ol>
+                            <li><strong>Enhanced Underwriting for Longer Terms:</strong> Implement additional scrutiny for 60-month applications, particularly for less-established borrowers, given their 2.3x higher default risk [cite: 1]</li>
+                            <li><strong>Employment-Length Based Pricing:</strong> Develop tiered pricing models that better reflect risk gradients across employment history segments [cite: 1]</li>
+                            <li><strong>Geographic Risk Adjustments:</strong> Refine regional scoring models to address elevated default rates in specific markets [cite: 1]</li>
+                            <li><strong>Debt Consolidation Product Development:</strong> Create specialized offerings for this dominant need, potentially with financial education components [cite: 1]</li>
+                            <li><strong>Seasonal Marketing Optimization:</strong> Align customer acquisition efforts with high-volume periods while maintaining credit standards [cite: 1]</li>
+                        </ol>
+                        <p>Future analytical work should focus on developing predictive models to better identify marginal loan applications that may transition between good and bad performance. Additional segmentation analysis could reveal more nuanced borrower profiles to further refine credit policies and product offerings. [cite: 1]</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+           
+            <p>Prepared by Khan Faisal</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.7/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
