@@ -33,7 +33,7 @@
 ## 📁 Project Structure
 
 ```
-D:.
+
 │   README.md
 │
 ├───assets
