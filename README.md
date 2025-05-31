@@ -1,52 +1,109 @@
-<h1 id="title">🏦 Bank Loan Insights</h1>
 
-  <div class="center">
-    <img src="https://socialify.git.ci/khanfaisal79960/Bank-Loan-Insights/image?language=1&name=1&owner=1&theme=Dark" alt="project-image">
-  </div>
+# 🏦 Bank Loan Insights - Data Analysis Dashboard
 
-  <p>
-    This project explores and analyzes historical loan application data to identify key trends, customer segments, and factors influencing loan approval decisions. By using data analysis and visualization techniques, the project provides actionable insights that can help financial institutions optimize their loan policies and improve approval accuracy.
-  </p>
+**"An insightful dashboard analyzing bank loan patterns and customer behavior."**
 
-  <h2>🚀 Live Dashboard</h2>
-  <div class="center">
-    <p>Explore the interactive dashboard powered by Looker Studio:</p>
-    <a href="https://lookerstudio.google.com/s/p8WTvQ5COeM" target="_blank">Click here to view on Looker Studio</a>
-    <br><br>
-  <p>View Live Project:</p>
-    <a href="https://bank-loan-insights.netlify.app" target="_blank">Click here to view the live project</a>
-    <br><br>
-  </div>
+**Bank Loan Insights** is an interactive analytics project built using **Power BI** and real-world loan data. The dashboard and accompanying reports offer clear visualizations of key insights in loan trends, customer segments, and financial risk. It is designed for banks, analysts, and decision-makers to quickly grasp complex loan data.
 
-  <h2>📸 Project Screenshots</h2>
-  <img src="assets/summary.jpg" alt="Summary Screenshot">
-  <img src="assets/overview.jpg" alt="Overview Screenshot">
+---
 
-  <h2>🧐 Features</h2>
-  <ul>
-    <li>📌 Data Cleaning & Preprocessing</li>
-    <li>📊 Exploratory Data Analysis (EDA)</li>
-    <li>📉 Risk Factor Analysis</li>
-    <li>📁 Segmentation of Applicants</li>
-    <li>📈 Interactive Visualizations</li>
-    <li>🔍 Insights Summary</li>
-    <li>📊 Dashboard (Planned in Power BI & Live in Looker Studio)</li>
-  </ul>
+## 🌐 View Live Project
 
-  <h2>🛠️ Installation Steps</h2>
-  <ol>
-    <li>Clone the Repository to your local machine:
-      <pre><code>git clone https://github.com/khanfaisal79960/Bank-Loan-Insights.git
-cd Bank-Loan-Insights</code></pre>
-    </li>
-    <li>Download and install <a href="https://powerbi.microsoft.com/desktop/" target="_blank">Power BI Desktop</a> (if not already installed).</li>
-    <li>Open the file <code>powerBI/bank_loan_data_insights.pbix</code> in Power BI.</li>
-  </ol>
+👉 [Bank Loan Insights Live](https://bank-loan-insights.netlify.app)
 
-  <h2>💻 Built With</h2>
-  <ul>
-    <li>Power BI</li>
-    <li>Google Data Studio / Looker Studio</li>
-    <li>Advanced Excel</li>
-    <li>DAX (Data Analysis Expressions)</li>
-  </ul>
+---
+
+## 🖼️ Cover Page
+
+![Cover Image](./assets/cover_image.png)
+
+---
+
+## ✨ Features
+
+- **📊 Visual Storytelling:** Understand trends in loan approvals, defaults, and customer behaviors.
+- **📌 Detailed Dashboards:** Summary, overview, and deep-dive views powered by Power BI.
+- **🌍 Geographic Insights:** Heatmaps show regional trends and risks.
+- **📈 Monthly & Term Trends:** Analyze performance over time and loan durations.
+- **📤 Exportable Reports:** Includes PDF and HTML formats for presentations and sharing.
+- **💡 Actionable Insights:** Designed to help stakeholders make informed financial decisions.
+
+---
+
+## 📁 Project Structure
+
+```
+D:.
+│   README.md
+│
+├───assets
+│       Bad Loan.png
+│       bank_logo.jpg
+│       cover_image.png
+│       details.jpg
+│       Employee Length.png
+│       Geographic Heatmap.png
+│       Good Loan.png
+│       Loan Purpose.png
+│       Long Term.png
+│       Monthly Trend.png
+│       overview.jpg
+│       summary.jpg
+│
+├───data
+│       financial_loan.csv
+│
+├───powerBI
+│       bank_loan_data_insights.pbix
+│
+└───reports
+        bank_loan_comprehensive_report.pdf
+        index.html
+        summary.pdf
+```
+
+---
+
+## 🧪 Setup & Usage
+
+1. **Open Power BI File:**
+
+   Open `powerBI/bank_loan_data_insights.pbix` with [Power BI Desktop](https://powerbi.microsoft.com/desktop).
+
+2. **Explore Dataset:**
+
+   Raw dataset used: `data/financial_loan.csv`.
+
+3. **View Reports:**
+
+   - 📄 PDF: `reports/bank_loan_comprehensive_report.pdf`
+   - 🌐 HTML Summary: `reports/index.html`
+
+---
+
+## 📷 Screenshots
+
+### 🔹 Summary Dashboard
+![Summary Dashboard](./assets/summary.jpg)
+
+### 🔹 Overview Dashboard
+![Overview Dashboard](./assets/overview.jpg)
+
+### 🔹 Detailed Dashboard
+![Detailed Dashboard](./assets/details.jpg)
+
+---
+
+## 👨‍💻 Developer
+
+**Faisal Khan**
+
+- 🌐 [Portfolio](https://khanfaisal.netlify.app)
+- 💻 [GitHub](https://github.com/khanfaisal79960)
+- 🔗 [LinkedIn](https://www.linkedin.com/in/khanfaisal79960)
+- ✍️ [Medium](https://medium.com/@khanfaisal79960)
+- 📷 [Instagram](https://instagram.com/mr._perfect_1004)
+
+---
+
+> Crafted with 📊 by Faisal Khan.
