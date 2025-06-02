@@ -9,8 +9,8 @@
 
 ## 🌐 View Live Project
 
-👉 [Bank Loan Insights Live](https://bank-loan-insights.netlify.app)
-
+👉 [View REport](https://bank-loan-insights.netlify.app)
+👉 [View Dashboard](https://lookerstudio.google.com/reporting/0aa7dea1-76d6-4421-9d89-3ed22c6ec909)
 ---
 
 ## 🖼️ Cover Page
